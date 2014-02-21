@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>Pirate_move_right_1</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{38, 26}, {175, 256}}</string>
+			<key>spriteOffset</key>
+			<string>{5.5, 6}</string>
+			<key>spriteSize</key>
+			<string>{175, 256}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{8, 232}, {256, 175}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>Pirate_move_right_2</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{9, 26}, {205, 266}}</string>
+			<key>spriteOffset</key>
+			<string>{-8.5, 1}</string>
+			<key>spriteSize</key>
+			<string>{205, 266}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{8, 8}, {266, 205}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>Pirate_stationary</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{30, 25}, {203, 241}}</string>
+			<key>spriteOffset</key>
+			<string>{11.5, 14.5}</string>
+			<key>spriteSize</key>
+			<string>{203, 241}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{292, 8}, {203, 241}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>USSoldier_attack_right_1</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{59, 62}, {139, 203}}</string>
+			<key>spriteOffset</key>
+			<string>{8.5, -3.5}</string>
+			<key>spriteSize</key>
+			<string>{139, 203}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{280, 268}, {203, 139}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>USSoldier_attack_right_2</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{59, 61}, {118, 204}}</string>
+			<key>spriteOffset</key>
+			<string>{-2, -3}</string>
+			<key>spriteSize</key>
+			<string>{118, 204}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{248, 420}, {204, 118}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>USSoldier_move_left_1</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{73, 61}, {108, 222}}</string>
+			<key>spriteOffset</key>
+			<string>{7, -12}</string>
+			<key>spriteSize</key>
+			<string>{108, 222}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{8, 420}, {222, 108}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>USSoldier_move_left_2</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{67, 63}, {99, 219}}</string>
+			<key>spriteOffset</key>
+			<string>{-3.5, -12.5}</string>
+			<key>spriteSize</key>
+			<string>{99, 219}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{8, 544}, {219, 99}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>USSoldier_stationary</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{73, 63}, {94, 202}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -4}</string>
+			<key>spriteSize</key>
+			<string>{94, 202}</string>
+			<key>spriteSourceSize</key>
+			<string>{240, 320}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{244, 556}, {202, 94}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>GeneratedWith</key>
+		<string>SpriteHelper</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>textureFileName</key>
+		<string>Game_Units.png</string>
+	</dict>
+</dict>
+</plist>

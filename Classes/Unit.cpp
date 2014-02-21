@@ -65,3 +65,41 @@ bool Unit::initWithSpriteFrame(CCSpriteFrame *spriteFrame)
     //return the super
     return CCSprite::initWithSpriteFrame(spriteFrame);
 }
+
+#pragma mark -
+#pragma mark Getters / Setters
+
+void Unit::setTargetEnemy(Unit *targetEnemy)
+{
+    CC_SAFE_RELEASE(_targetEnemy);
+    _targetEnemy = targetEnemy;
+    CC_SAFE_RETAIN(_targetEnemy);
+}
+
+void Unit::setMovingAnimation(CCAnimation *movingAnimation)
+{
+    CC_SAFE_RELEASE(_movingAnimation);
+    _movingAnimation = movingAnimation;
+    CC_SAFE_RETAIN(_movingAnimation);
+}
+
+void Unit::setAttackAnimation(CCAnimation *attackAnimation)
+{
+    CC_SAFE_RELEASE(_attackAnimation);
+    _attackAnimation = attackAnimation;
+    CC_SAFE_RETAIN(_attackAnimation);
+}
+
+void Unit::setStationaryAnimation(CCAnimation *stationaryAnimation)
+{
+    CC_SAFE_RELEASE(_stationaryAnimation);
+    _stationaryAnimation = stationaryAnimation;
+    CC_SAFE_RETAIN(_stationaryAnimation);
+}
+
+void Unit::setDeathAnimation(CCAnimation *deathAnimation)
+{
+    CC_SAFE_RELEASE(_deathAnimation);
+    _deathAnimation = deathAnimation;
+    CC_SAFE_RETAIN(_deathAnimation);
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>USSoldier</key>
+	<dict>
+		<key>stationaryFrameName</key>
+		<string>USSoldier_stationary</string>
+		<key>attackAnimation</key>
+		<string>USSoldier_attack_right</string>
+		<key>movingAnimation</key>
+		<string>USSoldier_move_left</string>
+		<key>rateOfFire</key>
+		<integer>20</integer>
+		<key>attackDamage</key>
+		<integer>1</integer>
+		<key>attackRadius</key>
+		<integer>50</integer>
+	</dict>
+	<key>Pirate</key>
+	<dict>
+		<key>stationaryFrameName</key>
+		<string>Pirate_stationary</string>
+		<key>movingAnimation</key>
+		<string>Pirate_move_right</string>
+		<key>rateOfFire</key>
+		<integer>1</integer>
+		<key>attackDamage</key>
+		<integer>20</integer>
+		<key>attackRadius</key>
+		<integer>10</integer>
+	</dict>
+</dict>
+</plist>

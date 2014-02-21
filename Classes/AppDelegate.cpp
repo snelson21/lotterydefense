@@ -63,38 +63,27 @@ vector<string> AppDelegate::initContentScaleFactor(CCEGLView *pEGLView, CCDirect
     
     CCSize frameSize = pEGLView->getFrameSize();
     vector<string> searchPath;
-    if (frameSize.height > ipadhdResource.size.height)
-    {
-        searchPath.push_back(hdResource.directory);
-        
-        pDirector->setContentScaleFactor(MIN(hdResource.size.height/designResolutionSize.height, hdResource.size.width/designResolutionSize.width));
-    }
-    else if (frameSize.height > ipadResource.size.height)
+    
+    // if the frame's height is larger than the height of hd resource size, select ipadhd resource.
+    if (frameSize.height > hdResource.size.height)
 	{
         searchPath.push_back(ipadhdResource.directory);
         
         pDirector->setContentScaleFactor(MIN(ipadhdResource.size.height/designResolutionSize.height, ipadhdResource.size.width/designResolutionSize.width));
 	}
-    // if the frame's height is larger than the height of small resource size, select medium resource.
-    else if (frameSize.height > iphonehdResource.size.height)
+    // if the frame's height is larger than the height of sd resource size, select hd resource.
+    else if (frameSize.height > sdResource.size.height)
     {
-        searchPath.push_back(ipadResource.directory);
+        searchPath.push_back(hdResource.directory);
         
-        pDirector->setContentScaleFactor(MIN(ipadResource.size.height/designResolutionSize.height, ipadResource.size.width/designResolutionSize.width));
+        pDirector->setContentScaleFactor(MIN(hdResource.size.height/designResolutionSize.height, hdResource.size.width/designResolutionSize.width));
     }
-    // if the frame's height is smaller than the height of
-    else if (frameSize.height > iphonehdResource.size.height)
-    {
-        searchPath.push_back(iphonehdResource.directory);
-        
-        pDirector->setContentScaleFactor(MIN(iphonehdResource.size.height/designResolutionSize.height, iphonehdResource.size.width/designResolutionSize.width));
-    }
-    // if the frame's height is smaller than the height of medium resource size, select small resource.
+    // if the frame's height is smaller than the height of sd resource size, select sd resource.
 	else
     {
-        searchPath.push_back(iphoneResource.directory);
+        searchPath.push_back(sdResource.directory);
         
-        pDirector->setContentScaleFactor(MIN(iphoneResource.size.height/designResolutionSize.height, iphoneResource.size.width/designResolutionSize.width));
+        pDirector->setContentScaleFactor(MIN(sdResource.size.height/designResolutionSize.height, sdResource.size.width/designResolutionSize.width));
     }
     
     return searchPath;

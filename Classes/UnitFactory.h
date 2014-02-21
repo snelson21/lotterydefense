@@ -14,9 +14,46 @@
 USING_NS_CC;
 using namespace std;
 
-class UnitFactory
+class Unit;
+
+class UnitFactory : public CCNode
 {
+public:
     
+    /**
+     @brief returns the singleton UnitFactory
+     */
+    static UnitFactory &sharedInstance();
+    
+    bool init();
+    
+    void loadSpriteCache();
+    
+    void loadAnimations();
+    
+    CCArray *getUnitTypes();
+    
+    CCSpriteBatchNode *getSpriteBatchNode();
+    
+    void setSpriteBatchNode(CCSpriteBatchNode *spriteBatchNode);
+    
+    Unit *createUnit(const char *name);
+    
+    
+private:
+    
+    UnitFactory();
+    
+    CCDictionary *_units;
+    
+    CCArray *unitTypes;
+    
+    CCSpriteBatchNode *_spriteBatchNode;
+    
+    //DO NOT IMPLEMENT
+    UnitFactory(UnitFactory const&);
+    //DO NOT IMPLEMENT
+    void operator=(UnitFactory const&);
 };
 
 #endif /* defined(__LotteryDefense__UnitFactory__) */

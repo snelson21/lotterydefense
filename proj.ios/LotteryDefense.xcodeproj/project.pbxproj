@@ -162,9 +162,6 @@
 		1AC3624B16D4A1E8000847F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3624516D4A1E8000847F2 /* main.m */; };
 		1ACB3244164770DE00914215 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB3243164770DE00914215 /* libcurl.a */; };
 		1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
-		1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
-		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCDA8116D4A25900906EA6 /* RootViewController.mm */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -235,6 +232,14 @@
 		8F5B50BE18B72CFB00CB0FBB /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B50BC18B72CFB00CB0FBB /* GameScene.cpp */; };
 		8F5B50C118B7441300CB0FBB /* Unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B50BF18B7441300CB0FBB /* Unit.cpp */; };
 		8F5B50C418B7D15400CB0FBB /* UnitFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B50C218B7D15400CB0FBB /* UnitFactory.cpp */; };
+		8F5B50D118B7E1B000CB0FBB /* hd in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50C818B7E1B000CB0FBB /* hd */; };
+		8F5B50D218B7E1B000CB0FBB /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50C918B7E1B000CB0FBB /* ipadhd */; };
+		8F5B50D318B7E1B000CB0FBB /* Pirate_move_right.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50CA18B7E1B000CB0FBB /* Pirate_move_right.plist */; };
+		8F5B50D418B7E1B000CB0FBB /* sd in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50CB18B7E1B000CB0FBB /* sd */; };
+		8F5B50D518B7E1B000CB0FBB /* USSoldier_attack_right.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50CC18B7E1B000CB0FBB /* USSoldier_attack_right.plist */; };
+		8F5B50D618B7E1B000CB0FBB /* USSoldier_move_left.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50CD18B7E1B000CB0FBB /* USSoldier_move_left.plist */; };
+		8F5B50D818B7E8CC00CB0FBB /* Units.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50D718B7E8CC00CB0FBB /* Units.plist */; };
+		8F5B50DA18B7F23F00CB0FBB /* Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50D918B7F23F00CB0FBB /* Animations.plist */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -587,9 +592,6 @@
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		1AFAF8B416D35DE700DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
-		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1AFCDA8016D4A25900906EA6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		1AFCDA8116D4A25900906EA6 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -736,6 +738,14 @@
 		8F5B50C018B7441300CB0FBB /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unit.h; path = ../Classes/Unit.h; sourceTree = "<group>"; };
 		8F5B50C218B7D15400CB0FBB /* UnitFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UnitFactory.cpp; path = ../Classes/UnitFactory.cpp; sourceTree = "<group>"; };
 		8F5B50C318B7D15400CB0FBB /* UnitFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitFactory.h; path = ../Classes/UnitFactory.h; sourceTree = "<group>"; };
+		8F5B50C818B7E1B000CB0FBB /* hd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hd; sourceTree = "<group>"; };
+		8F5B50C918B7E1B000CB0FBB /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ipadhd; sourceTree = "<group>"; };
+		8F5B50CA18B7E1B000CB0FBB /* Pirate_move_right.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pirate_move_right.plist; sourceTree = "<group>"; };
+		8F5B50CB18B7E1B000CB0FBB /* sd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sd; sourceTree = "<group>"; };
+		8F5B50CC18B7E1B000CB0FBB /* USSoldier_attack_right.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USSoldier_attack_right.plist; sourceTree = "<group>"; };
+		8F5B50CD18B7E1B000CB0FBB /* USSoldier_move_left.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USSoldier_move_left.plist; sourceTree = "<group>"; };
+		8F5B50D718B7E8CC00CB0FBB /* Units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Units.plist; sourceTree = "<group>"; };
+		8F5B50D918B7F23F00CB0FBB /* Animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Animations.plist; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1725,9 +1735,12 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
-				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
-				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
+				8F5B50C818B7E1B000CB0FBB /* hd */,
+				8F5B50C918B7E1B000CB0FBB /* ipadhd */,
+				8F5B50CB18B7E1B000CB0FBB /* sd */,
+				8F5B50CC18B7E1B000CB0FBB /* USSoldier_attack_right.plist */,
+				8F5B50CD18B7E1B000CB0FBB /* USSoldier_move_left.plist */,
+				8F5B50CA18B7E1B000CB0FBB /* Pirate_move_right.plist */,
 				D41A0AD0160F154A004552AE /* Default-568h@2x.png */,
 				7855E0DF153FEF240059DD9A /* Default.png */,
 				D446FD6D16102124000ADA7B /* Default@2x.png */,
@@ -1735,6 +1748,8 @@
 				D4EF949F15BD2D9800D803EB /* Icon-144.png */,
 				D4EF949915BD2D8B00D803EB /* Icon-57.png */,
 				D4EF949D15BD2D9600D803EB /* Icon-72.png */,
+				8F5B50D718B7E8CC00CB0FBB /* Units.plist */,
+				8F5B50D918B7F23F00CB0FBB /* Animations.plist */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -1809,6 +1824,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F5B50D218B7E1B000CB0FBB /* ipadhd in Resources */,
+				8F5B50D418B7E1B000CB0FBB /* sd in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
@@ -1816,12 +1833,15 @@
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
 				D41A0AD1160F154A004552AE /* Default-568h@2x.png in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
+				8F5B50D318B7E1B000CB0FBB /* Pirate_move_right.plist in Resources */,
+				8F5B50D618B7E1B000CB0FBB /* USSoldier_move_left.plist in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
-				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
-				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
-				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
+				8F5B50D518B7E1B000CB0FBB /* USSoldier_attack_right.plist in Resources */,
+				8F5B50D118B7E1B000CB0FBB /* hd in Resources */,
 				379BB9CC17F03F3700829B88 /* json_internalarray.inl in Resources */,
+				8F5B50D818B7E8CC00CB0FBB /* Units.plist in Resources */,
 				379BB9CD17F03F3700829B88 /* json_internalmap.inl in Resources */,
+				8F5B50DA18B7F23F00CB0FBB /* Animations.plist in Resources */,
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
 				379BB9D217F03F3700829B88 /* sconscript in Resources */,
 			);

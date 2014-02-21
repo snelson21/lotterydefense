@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>animations</key>
+	<dict>
+		<key>USSoldier_attack_right</key>
+		<dict>
+			<key>delayPerUnit</key>
+			<real>0.05000000074505806</real>
+			<key>frames</key>
+			<array>
+				<dict>
+					<key>delayUnits</key>
+					<real>1</real>
+					<key>notification</key>
+					<dict/>
+					<key>offset</key>
+					<string>{0, 0}</string>
+					<key>spriteframe</key>
+					<string>USSoldier_attack_right_1</string>
+				</dict>
+				<dict>
+					<key>delayUnits</key>
+					<real>1</real>
+					<key>notification</key>
+					<dict/>
+					<key>offset</key>
+					<string>{0, 0}</string>
+					<key>spriteframe</key>
+					<string>USSoldier_attack_right_2</string>
+				</dict>
+			</array>
+			<key>loop</key>
+			<true/>
+			<key>loops</key>
+			<integer>1</integer>
+			<key>restoreOriginalFrame</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>properties</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>spritesheets</key>
+		<array>
+			<string>Game_Units.plist</string>
+		</array>
+	</dict>
+</dict>
+</plist>
