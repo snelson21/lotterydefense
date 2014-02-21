@@ -11,10 +11,14 @@
 
 #include "ccTypes.h"
 
+USING_NS_CC;
+
 typedef struct tagResource
 {
-    cocos2d::CCSize size;
+    CCSize size;
     char directory[100];
 } Resource;
+
+enum UnitAlliance { Friendly, Enemy, Neutral };
 
 #endif

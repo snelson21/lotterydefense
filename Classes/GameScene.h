@@ -28,6 +28,8 @@ public:
     
     /**
      @brief  GameScene default initializer
+     @return true if the GameScene was initialized successfully
+             false if the GameScene failed to initialize 
      */
     virtual bool init();
     
