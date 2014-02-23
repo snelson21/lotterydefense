@@ -1,1 +1,9 @@
 .DS_Store
+local.properties
+proj.android/.project
+proj.android/.classpath
+proj.android/bin
+proj.android/obj
+proj.android/gen
+proj.android/assets
+proj.android/libs

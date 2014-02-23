@@ -39,9 +39,7 @@ bool GameScene::init()
     
     Unit *pirate = UnitFactory::sharedInstance().createUnit("Pirate");
     pirate->setPosition(ccp(win_size.width / 2.0, win_size.height / 2.0));
-    CCAnimate *animate = CCAnimate::create(pirate->getMovingAnimation());
-    pirate->runAction(CCRepeat::create(animate, -1));
-    
+    pirate->moveToLocation(ccp(win_size.width, win_size.height / 3.5));
     
     Unit *soldierAttack = UnitFactory::sharedInstance().createUnit("USSoldier");
     soldierAttack->setPosition(ccp(win_size.width / 3.0, win_size.height / 3.0));

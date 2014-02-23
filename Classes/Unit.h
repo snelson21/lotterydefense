@@ -12,6 +12,11 @@
 #include "cocos2d.h"
 #include "Types.h"
 
+#define MOVEMENT_ANIMATION_TAG      1
+#define STATIONARY_ANIMATION_TAG    2
+#define ATTACK_ANIMATION_TAG        3
+#define DEATH_ANIMATION_TAG         4
+
 USING_NS_CC;
 
 class Unit : public CCSprite
@@ -84,6 +89,9 @@ public:
     inline float getRateOfFire() { return _rateOfFire; }
     inline void setRateOfFire(float rateOfFire) { _rateOfFire = rateOfFire; }
     
+    inline float getSpeed() { return _speed; }
+    inline void setSpeed(float speed) { _speed = speed; }
+    
     inline CCAnimation *getMovingAnimation() { return _movingAnimation; }
     void setMovingAnimation(CCAnimation *movingAnimation);
     
@@ -95,6 +103,13 @@ public:
     
     inline CCAnimation *getDeathAnimation() { return _deathAnimation; }
     void setDeathAnimation(CCAnimation *deathAnimation);
+    
+#pragma mark -
+#pragma mark Movement
+    
+    void moveToLocation(const CCPoint &newLocation);
+    
+    void moveFinished();
     
 protected:
     
@@ -134,6 +149,11 @@ protected:
      @brief  Total attacks possible per second
      */
     float _rateOfFire;
+    
+    /**
+     @brief  Speed of movement
+     */
+    float _speed;
 
 #pragma mark -
 #pragma mark Animations

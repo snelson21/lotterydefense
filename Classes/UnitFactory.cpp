@@ -77,6 +77,7 @@ Unit *UnitFactory::createUnit(const char *name)
     float rateOfFire = unitSettings->valueForKey("rateOfFire")->floatValue();
     long attackDamage = unitSettings->valueForKey("attackDamage")->intValue();
     float attackRadius = unitSettings->valueForKey("attackRadius")->floatValue();
+    float speed = unitSettings->valueForKey("speed")->floatValue();
     const char *movingAnimationName = unitSettings->valueForKey("movingAnimation")->getCString();
     const char *attackAnimationName = unitSettings->valueForKey("attackAnimation")->getCString();
     
@@ -85,6 +86,7 @@ Unit *UnitFactory::createUnit(const char *name)
     unit->setRateOfFire(rateOfFire);
     unit->setAttackDamage(attackDamage);
     unit->setAttackRadius(attackRadius);
+    unit->setSpeed(speed);
     
     if(movingAnimationName != NULL)
     {

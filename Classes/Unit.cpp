@@ -16,13 +16,22 @@ USING_NS_CC;
 #pragma mark Constructor/Destructor
 
 Unit::Unit()
+: _movingAnimation(NULL)
+, _stationaryAnimation(NULL)
+, _attackAnimation(NULL)
+, _deathAnimation(NULL)
+, _targetEnemy(NULL)
 {
     
 }
 
 Unit::~Unit()
 {
-    
+    CC_SAFE_RELEASE(_movingAnimation);
+    CC_SAFE_RELEASE(_stationaryAnimation);
+    CC_SAFE_RELEASE(_attackAnimation);
+    CC_SAFE_RELEASE(_deathAnimation);
+    CC_SAFE_RELEASE(_targetEnemy);
 }
 
 #pragma mark -
@@ -102,4 +111,26 @@ void Unit::setDeathAnimation(CCAnimation *deathAnimation)
     CC_SAFE_RELEASE(_deathAnimation);
     _deathAnimation = deathAnimation;
     CC_SAFE_RETAIN(_deathAnimation);
+}
+
+#pragma mark -
+#pragma mark Movement
+
+
+void Unit::moveToLocation(const CCPoint &newLocation)
+{
+    CCPoint currentLocation = getPosition();
+    float distance = ccpDistance(currentLocation, newLocation);
+    float travelTime = distance / _speed;
+    CCFiniteTimeAction* actionMove = CCMoveTo::create(travelTime, newLocation);
+    CCFiniteTimeAction* actionMoveFinished = CCCallFuncN::create(this, callfuncN_selector(Unit::moveFinished));
+    CCRepeat *repeatAnimation = CCRepeat::create(CCAnimate::create(_movingAnimation), -1);
+    repeatAnimation->setTag(MOVEMENT_ANIMATION_TAG);
+    runAction(repeatAnimation);
+    runAction(CCSequence::create(actionMove, actionMoveFinished, NULL));
+}
+
+void Unit::moveFinished()
+{
+    stopActionByTag(MOVEMENT_ANIMATION_TAG);
 }
