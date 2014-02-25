@@ -81,6 +81,9 @@ Unit *UnitFactory::createUnit(const char *name)
     const char *movingAnimationName = unitSettings->valueForKey("movingAnimation")->getCString();
     const char *attackAnimationName = unitSettings->valueForKey("attackAnimation")->getCString();
     
+    float anchorVertical = unitSettings->valueForKey("anchorVertical")->floatValue();
+    float anchorHorizontal = unitSettings->valueForKey("anchorHorizontal")->floatValue();
+    
     
     Unit *unit = Unit::createWithSpriteFrameName(stationaryFrameName);
     unit->setRateOfFire(rateOfFire);
@@ -99,7 +102,7 @@ Unit *UnitFactory::createUnit(const char *name)
         unit->setAttackAnimation(attackAnimation);
     }
     
-    unit->setAnchorPoint(ccp(0.5f, 0.5f));
+    unit->setAnchorPoint(ccp(anchorHorizontal, anchorVertical));
     
     _spriteBatchNode->addChild(unit);
     

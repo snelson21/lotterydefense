@@ -55,6 +55,7 @@ public:
      @brief  Function where work is done within the fixed timestep of the game loop
      */
     void doWork();
+    
 
 protected:
     float _timeAccumulator;

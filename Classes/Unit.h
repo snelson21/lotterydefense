@@ -19,7 +19,7 @@
 
 USING_NS_CC;
 
-class Unit : public CCSprite
+class Unit : public CCSprite, public CCTargetedTouchDelegate
 {
     
 public:
@@ -34,7 +34,7 @@ public:
     /**
      @brief Unit destructor
      */
-    ~Unit();
+    virtual ~Unit();
 
 #pragma mark -
 #pragma mark Autorelease Creators
@@ -92,6 +92,9 @@ public:
     inline float getSpeed() { return _speed; }
     inline void setSpeed(float speed) { _speed = speed; }
     
+    inline CCSpriteFrame *stationaryFrame() { return _stationaryFrame; }
+    void setStationaryFrame(CCSpriteFrame * stationaryFrame);
+    
     inline CCAnimation *getMovingAnimation() { return _movingAnimation; }
     void setMovingAnimation(CCAnimation *movingAnimation);
     
@@ -104,12 +107,35 @@ public:
     inline CCAnimation *getDeathAnimation() { return _deathAnimation; }
     void setDeathAnimation(CCAnimation *deathAnimation);
     
+    CCRect getRect();
+    
 #pragma mark -
 #pragma mark Movement
     
     void moveToLocation(const CCPoint &newLocation);
     
     void moveFinished();
+    
+#pragma mark -
+#pragma mark Touches
+    
+    bool containsTouchLocation(CCTouch* touch);
+    
+    virtual void onEnter();
+    
+    virtual void onExit();
+    
+    virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
+    
+    virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
+    
+    virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
+    
+    virtual CCObject* copyWithZone(CCZone *pZone);
+    
+    virtual void touchDelegateRetain();
+    
+    virtual void touchDelegateRelease();
     
 protected:
     
@@ -157,6 +183,11 @@ protected:
 
 #pragma mark -
 #pragma mark Animations
+    
+    /**
+     @brief  Stationary sprite frame
+     */
+    CCSpriteFrame *_stationaryFrame;
     
     /**
      @brief  Animation to play while this unit is moving

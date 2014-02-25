@@ -16,7 +16,8 @@ USING_NS_CC;
 #pragma mark Constructor/Destructor
 
 Unit::Unit()
-: _movingAnimation(NULL)
+: _stationaryFrame(NULL)
+, _movingAnimation(NULL)
 , _stationaryAnimation(NULL)
 , _attackAnimation(NULL)
 , _deathAnimation(NULL)
@@ -69,7 +70,8 @@ Unit *Unit::createWithSpriteFrameName(const char *spriteFrameName)
 
 bool Unit::initWithSpriteFrame(CCSpriteFrame *spriteFrame)
 {
-    //TODO custom initilization will go here eventually
+    //TODO custom initilization will go here
+    _stationaryFrame = spriteFrame;
     
     //return the super
     return CCSprite::initWithSpriteFrame(spriteFrame);
@@ -83,6 +85,13 @@ void Unit::setTargetEnemy(Unit *targetEnemy)
     CC_SAFE_RELEASE(_targetEnemy);
     _targetEnemy = targetEnemy;
     CC_SAFE_RETAIN(_targetEnemy);
+}
+
+void Unit::setStationaryFrame(CCSpriteFrame * stationaryFrame)
+{
+    CC_SAFE_RELEASE(_stationaryFrame);
+    _stationaryFrame = stationaryFrame;
+    CC_SAFE_RETAIN(_stationaryFrame);
 }
 
 void Unit::setMovingAnimation(CCAnimation *movingAnimation)
@@ -113,6 +122,14 @@ void Unit::setDeathAnimation(CCAnimation *deathAnimation)
     CC_SAFE_RETAIN(_deathAnimation);
 }
 
+
+CCRect Unit::getRect()
+{
+    CCSize size = boundingBox().size;
+    CCPoint anchor = getAnchorPointInPoints();
+    return CCRectMake(-anchor.x, -anchor.y, size.width, size.height);
+}
+
 #pragma mark -
 #pragma mark Movement
 
@@ -133,4 +150,63 @@ void Unit::moveToLocation(const CCPoint &newLocation)
 void Unit::moveFinished()
 {
     stopActionByTag(MOVEMENT_ANIMATION_TAG);
+    setDisplayFrame(_stationaryFrame);
+}
+
+#pragma mark -
+#pragma mark Touches
+
+bool Unit::containsTouchLocation(CCTouch* touch)
+{
+    return getRect().containsPoint(convertTouchToNodeSpaceAR(touch));
+}
+
+void Unit::onEnter()
+{
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+    CCSprite::onEnter();
+}
+
+void Unit::onExit()
+{
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->removeDelegate(this);
+    CCSprite::onExit();
+}
+
+bool Unit::ccTouchBegan(CCTouch* touch, CCEvent* event)
+{
+    if(containsTouchLocation(touch))
+    {
+        CCLog("Touched Unit at %f,%f", getPosition().x, getPosition().y);
+        return true;
+    }
+    return false;
+}
+
+void Unit::ccTouchMoved(CCTouch* touch, CCEvent* event)
+{
+    
+}
+
+void Unit::ccTouchEnded(CCTouch* touch, CCEvent* event)
+{
+    
+}
+
+CCObject* Unit::copyWithZone(CCZone *pZone)
+{
+    this->retain();
+    return this;
+}
+
+void Unit::touchDelegateRetain()
+{
+    this->retain();
+}
+
+void Unit::touchDelegateRelease()
+{
+    this->release();
 }

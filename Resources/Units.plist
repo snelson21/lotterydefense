@@ -4,6 +4,10 @@
 <dict>
 	<key>USSoldier</key>
 	<dict>
+		<key>anchorHorizontal</key>
+		<real>0.5</real>
+		<key>anchorVertical</key>
+		<real>0.3</real>
 		<key>speed</key>
 		<integer>10</integer>
 		<key>stationaryFrameName</key>
@@ -21,6 +25,10 @@
 	</dict>
 	<key>Pirate</key>
 	<dict>
+		<key>anchorHorizontal</key>
+		<real>0.5</real>
+		<key>anchorVertical</key>
+		<real>0.3</real>
 		<key>speed</key>
 		<integer>20</integer>
 		<key>stationaryFrameName</key>

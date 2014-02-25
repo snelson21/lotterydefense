@@ -16,7 +16,7 @@
 #define DESIGN_RESOLUTION_960X640    1
 #define DESIGN_RESOLUTION_2048X1536  2
 
-#define TARGET_DESIGN_RESOLUTION_SIZE  DESIGN_RESOLUTION_480x320
+#define TARGET_DESIGN_RESOLUTION_SIZE  DESIGN_RESOLUTION_480X320
 
 static Resource sdResource       =  { cocos2d::CCSizeMake(480, 320),   "sd"     };
 static Resource hdResource       =  { cocos2d::CCSizeMake(960, 640),   "hd"     };

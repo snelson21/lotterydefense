@@ -240,6 +240,8 @@
 		8F5B50D618B7E1B000CB0FBB /* USSoldier_move_left.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50CD18B7E1B000CB0FBB /* USSoldier_move_left.plist */; };
 		8F5B50D818B7E8CC00CB0FBB /* Units.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50D718B7E8CC00CB0FBB /* Units.plist */; };
 		8F5B50DA18B7F23F00CB0FBB /* Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50D918B7F23F00CB0FBB /* Animations.plist */; };
+		8F5B82A718BC698300F559A0 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B82A518BC698300F559A0 /* Map.cpp */; };
+		8F5B82AA18BC6BC800F559A0 /* GameTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B82A818BC6BC800F559A0 /* GameTile.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -746,6 +748,10 @@
 		8F5B50CD18B7E1B000CB0FBB /* USSoldier_move_left.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USSoldier_move_left.plist; sourceTree = "<group>"; };
 		8F5B50D718B7E8CC00CB0FBB /* Units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Units.plist; sourceTree = "<group>"; };
 		8F5B50D918B7F23F00CB0FBB /* Animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Animations.plist; sourceTree = "<group>"; };
+		8F5B82A518BC698300F559A0 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = ../Classes/Map.cpp; sourceTree = "<group>"; };
+		8F5B82A618BC698300F559A0 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = ../Classes/Map.h; sourceTree = "<group>"; };
+		8F5B82A818BC6BC800F559A0 /* GameTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameTile.cpp; path = ../Classes/GameTile.cpp; sourceTree = "<group>"; };
+		8F5B82A918BC6BC800F559A0 /* GameTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameTile.h; path = ../Classes/GameTile.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1291,6 +1297,10 @@
 				8F5B50C018B7441300CB0FBB /* Unit.h */,
 				8F5B50C218B7D15400CB0FBB /* UnitFactory.cpp */,
 				8F5B50C318B7D15400CB0FBB /* UnitFactory.h */,
+				8F5B82A518BC698300F559A0 /* Map.cpp */,
+				8F5B82A618BC698300F559A0 /* Map.h */,
+				8F5B82A818BC6BC800F559A0 /* GameTile.cpp */,
+				8F5B82A918BC6BC800F559A0 /* GameTile.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1940,6 +1950,7 @@
 				15A3DA391682F826002FB0C5 /* CCControlLoader.cpp in Sources */,
 				15A3DA3A1682F826002FB0C5 /* CCData.cpp in Sources */,
 				15A3DA3B1682F826002FB0C5 /* CCLabelBMFontLoader.cpp in Sources */,
+				8F5B82A718BC698300F559A0 /* Map.cpp in Sources */,
 				15A3DA3C1682F826002FB0C5 /* CCLabelTTFLoader.cpp in Sources */,
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
@@ -1988,6 +1999,7 @@
 				1A8F3B6E175E05DA00049216 /* Animation.cpp in Sources */,
 				1A8F3B6F175E05DA00049216 /* AnimationState.cpp in Sources */,
 				1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */,
+				8F5B82AA18BC6BC800F559A0 /* GameTile.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
