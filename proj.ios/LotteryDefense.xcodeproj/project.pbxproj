@@ -242,6 +242,7 @@
 		8F5B50DA18B7F23F00CB0FBB /* Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50D918B7F23F00CB0FBB /* Animations.plist */; };
 		8F5B82A718BC698300F559A0 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B82A518BC698300F559A0 /* Map.cpp */; };
 		8F5B82AA18BC6BC800F559A0 /* GameTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B82A818BC6BC800F559A0 /* GameTile.cpp */; };
+		8F9F358318BEA4EF00F4851D /* MovePathIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F9F358118BEA4EF00F4851D /* MovePathIndicator.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -752,6 +753,8 @@
 		8F5B82A618BC698300F559A0 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = ../Classes/Map.h; sourceTree = "<group>"; };
 		8F5B82A818BC6BC800F559A0 /* GameTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameTile.cpp; path = ../Classes/GameTile.cpp; sourceTree = "<group>"; };
 		8F5B82A918BC6BC800F559A0 /* GameTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameTile.h; path = ../Classes/GameTile.h; sourceTree = "<group>"; };
+		8F9F358118BEA4EF00F4851D /* MovePathIndicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePathIndicator.cpp; path = ../Classes/MovePathIndicator.cpp; sourceTree = "<group>"; };
+		8F9F358218BEA4EF00F4851D /* MovePathIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePathIndicator.h; path = ../Classes/MovePathIndicator.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1301,6 +1304,8 @@
 				8F5B82A618BC698300F559A0 /* Map.h */,
 				8F5B82A818BC6BC800F559A0 /* GameTile.cpp */,
 				8F5B82A918BC6BC800F559A0 /* GameTile.h */,
+				8F9F358118BEA4EF00F4851D /* MovePathIndicator.cpp */,
+				8F9F358218BEA4EF00F4851D /* MovePathIndicator.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1929,6 +1934,7 @@
 				15A3D9A61682F7F9002FB0C5 /* cpBody.c in Sources */,
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
+				8F9F358318BEA4EF00F4851D /* MovePathIndicator.cpp in Sources */,
 				15A3D9A91682F7F9002FB0C5 /* cpPolyShape.c in Sources */,
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,

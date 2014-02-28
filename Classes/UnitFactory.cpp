@@ -102,8 +102,9 @@ Unit *UnitFactory::createUnit(const char *name)
         unit->setAttackAnimation(attackAnimation);
     }
     
+    //unit->setContentSize(unit->getTextureRect().size);
     unit->setAnchorPoint(ccp(anchorHorizontal, anchorVertical));
-    
+    //unit->setAnchorPoint(ccp(0.5f, 0.5f));
     _spriteBatchNode->addChild(unit);
     
     return unit;

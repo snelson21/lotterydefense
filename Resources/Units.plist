@@ -7,7 +7,7 @@
 		<key>anchorHorizontal</key>
 		<real>0.5</real>
 		<key>anchorVertical</key>
-		<real>0.3</real>
+		<real>0.5</real>
 		<key>speed</key>
 		<integer>10</integer>
 		<key>stationaryFrameName</key>
@@ -28,7 +28,7 @@
 		<key>anchorHorizontal</key>
 		<real>0.5</real>
 		<key>anchorVertical</key>
-		<real>0.3</real>
+		<real>0.5</real>
 		<key>speed</key>
 		<integer>20</integer>
 		<key>stationaryFrameName</key>

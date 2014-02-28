@@ -13,6 +13,9 @@
 
 USING_NS_CC;
 
+class Unit;
+class Map;
+
 class GameScene : public CCLayerColor
 {
 public:
@@ -56,9 +59,24 @@ public:
      */
     void doWork();
     
+    /**
+     @brief Draws a bounding box around the unit
+     @param the unit to draw the bounding box of
+     */
+    void drawBoundingBox(Unit *unit);
+    
+    /**
+     @brief Draws the position of each GameTile and the paths to each neighbor from each GameTile
+     @param The tile map to draw positions and neighbor paths of
+     */
+    void drawMap(Map *map);
+    
+    inline Map *getMap() { return _map; }
 
 protected:
     float _timeAccumulator;
+    
+    Map *_map;
 };
 
 #endif /* defined(__LotteryDefense__GameScene__) */

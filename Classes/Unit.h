@@ -19,6 +19,8 @@
 
 USING_NS_CC;
 
+class MovePathIndicator;
+
 class Unit : public CCSprite, public CCTargetedTouchDelegate
 {
     
@@ -27,12 +29,12 @@ public:
 #pragma mark Constructor/Destructor
     
     /**
-     @brief Unit constructor
+     @brief  Unit constructor
      */
     Unit();
     
     /**
-     @brief Unit destructor
+     @brief  Unit destructor
      */
     virtual ~Unit();
 
@@ -109,22 +111,53 @@ public:
     
     CCRect getRect();
     
+    inline MovePathIndicator *getMovePathIndicator() { return _movePathIndicator; }
+    void setMovePathIndicator(MovePathIndicator *movePathIndicator); 
+    
 #pragma mark -
 #pragma mark Movement
     
+    /**
+     @brief  Move the unit to the location specified with movement animation
+     @param  the location to move to
+     */
     void moveToLocation(const CCPoint &newLocation);
     
+    /**
+     @brief  Callback that will stop the movement animation.  Should be called when movement stops.
+     */
     void moveFinished();
     
 #pragma mark -
 #pragma mark Touches
     
+    /**
+     @brief  Check if the location of the given touch event is within the bounding box of the unit
+     @param  Touch event with location to check
+     @return true if the touch location is within the bounding box of this unit
+             false if the touch location is not within the bounding box of this unit
+     */
     bool containsTouchLocation(CCTouch* touch);
     
+    /**
+     @brief  Called when the unit enters the scene
+     */
     virtual void onEnter();
     
+    /**
+     @brief  Called when the unit exits the scene
+     */
     virtual void onExit();
     
+    /**
+     @brief  Called whenever a touch begins on the screen.  This function should translate the touch
+             coordinates to node space and confirm if the touch is inside its bounding box then return 
+             true or false based on the result.
+     @param  The touch object.  Contains location information.
+     @param  The event object.  Not Currently Used.
+     @return true if this object is claiming the touch
+             false if this object does not claim the touch
+     */
     virtual bool ccTouchBegan(CCTouch* touch, CCEvent* event);
     
     virtual void ccTouchMoved(CCTouch* touch, CCEvent* event);
@@ -208,6 +241,16 @@ protected:
      @brief  Animation to play while this unit is dying
      */
     CCAnimation *_deathAnimation;
+    
+#pragma mark -
+#pragma mark Indicators
+    
+    /**
+     @brief Move Path Indicator
+            Should only exist when the unit has been clicked on and the click is being
+            dragged to another portion of the screen.
+     */
+    MovePathIndicator *_movePathIndicator;
 };
 
 

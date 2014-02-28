@@ -20,9 +20,17 @@ Map::~Map()
     
 }
 
+GameTile *Map::getTile(int column, int row)
+{
+    int rowIndex = row * TILE_COLUMNS;
+    int index = column + rowIndex;
+    CCAssert((index >= 0 && index < _totalTiles), "Map::getTile() Invalid Tile Index Requested");
+    
+    return _tiles[index];
+}
+
 void Map::init()
 {
-    
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     _totalTiles = TILE_ROWS * TILE_COLUMNS;
     _tiles = new GameTile*[_totalTiles];
@@ -71,4 +79,20 @@ void Map::init()
             currentY += TILE_HEIGHT;
         }
     }
+}
+
+
+GameTile *Map::getTileForTouch(CCTouch *touch)
+{
+    CCPoint location = touch->getLocation();
+    
+    for(int i = 0; i < _totalTiles; i++)
+    {
+        GameTile *tile = _tiles[i];
+        if(tile->getFrame().containsPoint(location))
+        {
+            return tile;
+        }
+    }
+    return NULL;
 }

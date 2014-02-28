@@ -18,6 +18,7 @@ USING_NS_CC;
 using namespace std;
 
 GameScene::GameScene()
+: _map(NULL)
 {
 }
 
@@ -35,9 +36,37 @@ bool GameScene::init()
     
     this->setTouchEnabled(true);
     
-    Map *map = new Map();
-    map->init();
+    _map = new Map();
+    _map->init();
     
+    drawMap(_map);
+
+    addChild(UnitFactory::sharedInstance().getSpriteBatchNode());
+    
+    Unit *pirate = UnitFactory::sharedInstance().createUnit("Pirate");
+    pirate->setAlliance(Neutral);
+    pirate->setPosition(_map->getTile(10,3)->getPosition());
+    //drawBoundingBox(pirate);
+    
+    Unit *soldierAttack = UnitFactory::sharedInstance().createUnit("USSoldier");
+    soldierAttack->setAlliance(Friendly);
+    soldierAttack->setPosition(_map->getTile(5,3)->getPosition());
+    //drawBoundingBox(soldierAttack);
+    
+    Unit *soldierWalk = UnitFactory::sharedInstance().createUnit("USSoldier");
+    soldierWalk->setAlliance(Enemy);
+    soldierWalk->setPosition(_map->getTile(6,7)->getPosition());
+    //drawBoundingBox(soldierWalk);
+    
+    //schedule the update
+    this->schedule(schedule_selector(GameScene::update), FIXED_TIMESTEP);
+    
+    
+    return true;
+}
+
+void GameScene::drawMap(Map *map)
+{
     CCDrawNode *drawNode = CCDrawNode::create();
     
     for( int i = 0; i < map->getTotalTiles(); i++ )
@@ -79,36 +108,23 @@ bool GameScene::init()
     }
     
     addChild(drawNode);
+}
 
-    addChild(UnitFactory::sharedInstance().getSpriteBatchNode());
+void GameScene::drawBoundingBox(Unit *unit)
+{
+    CCRect bb = unit->boundingBox();
+    CCDrawNode *drawNode = CCDrawNode::create();
+    ccColor4F fillColor = ccc4f(0.0f, 0.0f, 0.0f, 0.0f);
+    ccColor4F borderColor = ccc4f(1.0f, 1.0f, 0.0f, 1.0f);
+    CCPoint verts[4];
+    verts[0] = bb.origin;
+    verts[1] = ccp(bb.origin.x + bb.size.width, bb.origin.y);
+    verts[2] = ccp(bb.origin.x + bb.size.width, bb.origin.y + bb.size.height);
+    verts[3] = ccp(bb.origin.x, bb.origin.y + bb.size.height);
     
-    CCSize win_size = CCDirector::sharedDirector()->getWinSize();
-    
-    CCLog("Winsize width: %f height: %f", win_size.width, win_size.height);
-    
-    Unit *pirate = UnitFactory::sharedInstance().createUnit("Pirate");
-    pirate->setAlliance(Neutral);
-    pirate->setPosition(ccp(win_size.width / 2.0, win_size.height / 2.0));
-    
-    CCRect PirateTextureRect = pirate->getTextureRect();
-    CCLog("Pirate Width: %f Height: %f", PirateTextureRect.size.width, PirateTextureRect.size.height);
-    
-    Unit *soldierAttack = UnitFactory::sharedInstance().createUnit("USSoldier");
-    soldierAttack->setAlliance(Friendly);
-    soldierAttack->setPosition(ccp(win_size.width / 3.0, win_size.height / 3.0));
-    
-    Unit *soldierWalk = UnitFactory::sharedInstance().createUnit("USSoldier");
-    soldierWalk->setAlliance(Enemy);
-    soldierWalk->setPosition(ccp(win_size.width / 1.5, win_size.height / 3.0));
-    
-    CCRect textureRect = soldierWalk->getTextureRect();
-    CCLog("Soldier Width: %f Height: %f", textureRect.size.width, textureRect.size.height);
-    
-    //schedule the update
-    this->schedule(schedule_selector(GameScene::update), FIXED_TIMESTEP);
-    
-    
-    return true;
+    drawNode->drawPolygon(verts, 4, fillColor, 2.0f, borderColor);
+    drawNode->drawDot(unit->getPosition(), 5.0f, borderColor);
+    addChild(drawNode);
 }
 
 CCScene *GameScene::scene()

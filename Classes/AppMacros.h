@@ -27,4 +27,6 @@
 
 #define FIXED_TIMESTEP (1.0/60.0)
 
+#define MOVE_PATH_WIDTH 5.0f
+
 #endif

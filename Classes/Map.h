@@ -26,6 +26,10 @@ public:
     inline GameTile **getTiles() { return _tiles; }
     inline int getTotalTiles() { return _totalTiles; }
     
+    GameTile *getTile(int column, int row);
+    
+    GameTile *getTileForTouch(CCTouch *touch);
+    
 protected:
     
     GameTile **_tiles;

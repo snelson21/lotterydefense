@@ -8,6 +8,10 @@
 
 #include "Unit.h"
 #include "cocos2d.h"
+#include "MovePathIndicator.h"
+#include "GameScene.h"
+#include "Map.h"
+#include "GameTile.h"
 
 USING_NS_CC;
 
@@ -22,6 +26,7 @@ Unit::Unit()
 , _attackAnimation(NULL)
 , _deathAnimation(NULL)
 , _targetEnemy(NULL)
+, _movePathIndicator(NULL)
 {
     
 }
@@ -33,6 +38,7 @@ Unit::~Unit()
     CC_SAFE_RELEASE(_attackAnimation);
     CC_SAFE_RELEASE(_deathAnimation);
     CC_SAFE_RELEASE(_targetEnemy);
+    CC_SAFE_RELEASE(_movePathIndicator);
 }
 
 #pragma mark -
@@ -125,9 +131,17 @@ void Unit::setDeathAnimation(CCAnimation *deathAnimation)
 
 CCRect Unit::getRect()
 {
-    CCSize size = boundingBox().size;
+    CCSize size = getContentSize();
     CCPoint anchor = getAnchorPointInPoints();
     return CCRectMake(-anchor.x, -anchor.y, size.width, size.height);
+}
+
+void Unit::setMovePathIndicator(MovePathIndicator *movePathIndicator)
+{
+    CC_SAFE_RELEASE(_movePathIndicator);
+    _movePathIndicator = movePathIndicator;
+    CC_SAFE_RETAIN(_movePathIndicator);
+    getParent()->getParent()->addChild(_movePathIndicator);
 }
 
 #pragma mark -
@@ -180,6 +194,12 @@ bool Unit::ccTouchBegan(CCTouch* touch, CCEvent* event)
     if(containsTouchLocation(touch))
     {
         CCLog("Touched Unit at %f,%f", getPosition().x, getPosition().y);
+        if(_movePathIndicator == NULL)
+        {
+            //create the move path indicator
+            moveFinished();
+            setMovePathIndicator(MovePathIndicator::createWithUnit(this));
+        }
         return true;
     }
     return false;
@@ -187,12 +207,18 @@ bool Unit::ccTouchBegan(CCTouch* touch, CCEvent* event)
 
 void Unit::ccTouchMoved(CCTouch* touch, CCEvent* event)
 {
-    
+    getMovePathIndicator()->setEndPoint(touch->getLocation());
 }
 
 void Unit::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
-    
+    Map *map = ((GameScene *)(getParent()->getParent()))->getMap();
+    GameTile *tile = map->getTileForTouch(touch);
+    if(tile != NULL)
+    {
+        CCPoint tilePosition = tile->getPosition();
+        _movePathIndicator->setEndPoint(tilePosition);
+    }
 }
 
 CCObject* Unit::copyWithZone(CCZone *pZone)
