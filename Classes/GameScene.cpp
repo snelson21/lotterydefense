@@ -24,6 +24,7 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
+    CC_SAFE_RELEASE(_map);
 }
 
 bool GameScene::init()
@@ -36,26 +37,25 @@ bool GameScene::init()
     
     this->setTouchEnabled(true);
     
-    _map = new Map();
-    _map->init();
+    setMap(Map::create());
     
-    drawMap(_map);
+    //drawMap(_map);
 
     addChild(UnitFactory::sharedInstance().getSpriteBatchNode());
     
     Unit *pirate = UnitFactory::sharedInstance().createUnit("Pirate");
     pirate->setAlliance(Neutral);
-    pirate->setPosition(_map->getTile(10,3)->getPosition());
+    pirate->warpToTile(_map->getTile(10,3));
     //drawBoundingBox(pirate);
     
     Unit *soldierAttack = UnitFactory::sharedInstance().createUnit("USSoldier");
     soldierAttack->setAlliance(Friendly);
-    soldierAttack->setPosition(_map->getTile(5,3)->getPosition());
+    soldierAttack->warpToTile(_map->getTile(5,3));
     //drawBoundingBox(soldierAttack);
     
     Unit *soldierWalk = UnitFactory::sharedInstance().createUnit("USSoldier");
     soldierWalk->setAlliance(Enemy);
-    soldierWalk->setPosition(_map->getTile(6,7)->getPosition());
+    soldierWalk->warpToTile(_map->getTile(6,7));
     //drawBoundingBox(soldierWalk);
     
     //schedule the update
@@ -63,6 +63,13 @@ bool GameScene::init()
     
     
     return true;
+}
+
+void GameScene::setMap(Map *map)
+{
+    CC_SAFE_RELEASE(_map);
+    _map = map;
+    CC_SAFE_RETAIN(_map);
 }
 
 void GameScene::drawMap(Map *map)
@@ -73,6 +80,7 @@ void GameScene::drawMap(Map *map)
     {
         GameTile *tile = map->getTiles()[i];
         drawNode->drawDot(tile->getPosition(), 10.0f, ccc4f(1.0f, 0.0f, 0.0f, 1.0f));
+        
         if(tile->up)
         {
             drawNode->drawSegment(tile->getPosition(), tile->up->getPosition(), 1.0f, ccc4f(0.0f,1.0f,0.0f,1.0f));
@@ -97,14 +105,17 @@ void GameScene::drawMap(Map *map)
         {
             drawNode->drawSegment(tile->getPosition(), tile->downLeft->getPosition(), 1.0f, ccc4f(0.0f,1.0f,0.0f,1.0f));
         }
+         
         if(tile->upRight)
         {
             drawNode->drawSegment(tile->getPosition(), tile->upRight->getPosition(), 1.0f, ccc4f(0.0f,1.0f,0.0f,1.0f));
         }
+        
         if(tile->downRight)
         {
             drawNode->drawSegment(tile->getPosition(), tile->downRight->getPosition(), 1.0f, ccc4f(0.0f,1.0f,0.0f,1.0f));
         }
+        
     }
     
     addChild(drawNode);

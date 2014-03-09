@@ -229,6 +229,8 @@
 		379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* GUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
+		8F0A7C6718CBABFF005A7FA6 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A7C6518CBABFF005A7FA6 /* Path.cpp */; };
+		8F0A7C6A18CBB5D9005A7FA6 /* PathNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F0A7C6818CBB5D9005A7FA6 /* PathNode.cpp */; };
 		8F5B50BE18B72CFB00CB0FBB /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B50BC18B72CFB00CB0FBB /* GameScene.cpp */; };
 		8F5B50C118B7441300CB0FBB /* Unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B50BF18B7441300CB0FBB /* Unit.cpp */; };
 		8F5B50C418B7D15400CB0FBB /* UnitFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B50C218B7D15400CB0FBB /* UnitFactory.cpp */; };
@@ -242,6 +244,9 @@
 		8F5B50DA18B7F23F00CB0FBB /* Animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B50D918B7F23F00CB0FBB /* Animations.plist */; };
 		8F5B82A718BC698300F559A0 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B82A518BC698300F559A0 /* Map.cpp */; };
 		8F5B82AA18BC6BC800F559A0 /* GameTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B82A818BC6BC800F559A0 /* GameTile.cpp */; };
+		8F73F04D18C29D4000F75E1D /* Pathfinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F73F04B18C29D4000F75E1D /* Pathfinder.cpp */; };
+		8F73F05018C2A6E900F75E1D /* PathFindTileMinHeap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F73F04E18C2A6E900F75E1D /* PathFindTileMinHeap.cpp */; };
+		8F73F05618C2BACE00F75E1D /* PathFindTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F73F05418C2BACE00F75E1D /* PathFindTile.cpp */; };
 		8F9F358318BEA4EF00F4851D /* MovePathIndicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F9F358118BEA4EF00F4851D /* MovePathIndicator.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -732,6 +737,10 @@
 		379BB99317F03F3700829B88 /* SceneReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneReader.cpp; sourceTree = "<group>"; };
 		379BB99417F03F3700829B88 /* SceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
+		8F0A7C6518CBABFF005A7FA6 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Path.cpp; path = ../Classes/Path.cpp; sourceTree = "<group>"; };
+		8F0A7C6618CBABFF005A7FA6 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Path.h; path = ../Classes/Path.h; sourceTree = "<group>"; };
+		8F0A7C6818CBB5D9005A7FA6 /* PathNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathNode.cpp; path = ../Classes/PathNode.cpp; sourceTree = "<group>"; };
+		8F0A7C6918CBB5D9005A7FA6 /* PathNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathNode.h; path = ../Classes/PathNode.h; sourceTree = "<group>"; };
 		8F5B50B918B7283400CB0FBB /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppMacros.h; path = ../Classes/AppMacros.h; sourceTree = "<group>"; };
 		8F5B50BA18B7287700CB0FBB /* DesignResolution.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DesignResolution.h; path = ../Classes/DesignResolution.h; sourceTree = "<group>"; };
 		8F5B50BB18B72BFB00CB0FBB /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Types.h; path = ../Classes/Types.h; sourceTree = "<group>"; };
@@ -753,6 +762,12 @@
 		8F5B82A618BC698300F559A0 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = ../Classes/Map.h; sourceTree = "<group>"; };
 		8F5B82A818BC6BC800F559A0 /* GameTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameTile.cpp; path = ../Classes/GameTile.cpp; sourceTree = "<group>"; };
 		8F5B82A918BC6BC800F559A0 /* GameTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameTile.h; path = ../Classes/GameTile.h; sourceTree = "<group>"; };
+		8F73F04B18C29D4000F75E1D /* Pathfinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pathfinder.cpp; path = ../Classes/Pathfinder.cpp; sourceTree = "<group>"; };
+		8F73F04C18C29D4000F75E1D /* Pathfinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pathfinder.h; path = ../Classes/Pathfinder.h; sourceTree = "<group>"; };
+		8F73F04E18C2A6E900F75E1D /* PathFindTileMinHeap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathFindTileMinHeap.cpp; path = ../Classes/PathFindTileMinHeap.cpp; sourceTree = "<group>"; };
+		8F73F04F18C2A6E900F75E1D /* PathFindTileMinHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFindTileMinHeap.h; path = ../Classes/PathFindTileMinHeap.h; sourceTree = "<group>"; };
+		8F73F05418C2BACE00F75E1D /* PathFindTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PathFindTile.cpp; path = ../Classes/PathFindTile.cpp; sourceTree = "<group>"; };
+		8F73F05518C2BACE00F75E1D /* PathFindTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathFindTile.h; path = ../Classes/PathFindTile.h; sourceTree = "<group>"; };
 		8F9F358118BEA4EF00F4851D /* MovePathIndicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MovePathIndicator.cpp; path = ../Classes/MovePathIndicator.cpp; sourceTree = "<group>"; };
 		8F9F358218BEA4EF00F4851D /* MovePathIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovePathIndicator.h; path = ../Classes/MovePathIndicator.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1306,6 +1321,16 @@
 				8F5B82A918BC6BC800F559A0 /* GameTile.h */,
 				8F9F358118BEA4EF00F4851D /* MovePathIndicator.cpp */,
 				8F9F358218BEA4EF00F4851D /* MovePathIndicator.h */,
+				8F73F04B18C29D4000F75E1D /* Pathfinder.cpp */,
+				8F73F04C18C29D4000F75E1D /* Pathfinder.h */,
+				8F73F04E18C2A6E900F75E1D /* PathFindTileMinHeap.cpp */,
+				8F73F04F18C2A6E900F75E1D /* PathFindTileMinHeap.h */,
+				8F73F05418C2BACE00F75E1D /* PathFindTile.cpp */,
+				8F73F05518C2BACE00F75E1D /* PathFindTile.h */,
+				8F0A7C6518CBABFF005A7FA6 /* Path.cpp */,
+				8F0A7C6618CBABFF005A7FA6 /* Path.h */,
+				8F0A7C6818CBB5D9005A7FA6 /* PathNode.cpp */,
+				8F0A7C6918CBB5D9005A7FA6 /* PathNode.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1875,6 +1900,7 @@
 				15A3D9021682F7D5002FB0C5 /* b2CollidePolygon.cpp in Sources */,
 				15A3D9031682F7D5002FB0C5 /* b2Collision.cpp in Sources */,
 				15A3D9041682F7D5002FB0C5 /* b2Distance.cpp in Sources */,
+				8F73F05018C2A6E900F75E1D /* PathFindTileMinHeap.cpp in Sources */,
 				15A3D9051682F7D5002FB0C5 /* b2DynamicTree.cpp in Sources */,
 				15A3D9061682F7D5002FB0C5 /* b2TimeOfImpact.cpp in Sources */,
 				15A3D9071682F7D5002FB0C5 /* b2ChainShape.cpp in Sources */,
@@ -1905,6 +1931,7 @@
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
 				15A3D9201682F7D5002FB0C5 /* b2DistanceJoint.cpp in Sources */,
 				15A3D9211682F7D5002FB0C5 /* b2FrictionJoint.cpp in Sources */,
+				8F73F05618C2BACE00F75E1D /* PathFindTile.cpp in Sources */,
 				15A3D9221682F7D5002FB0C5 /* b2GearJoint.cpp in Sources */,
 				15A3D9231682F7D5002FB0C5 /* b2Joint.cpp in Sources */,
 				15A3D9241682F7D5002FB0C5 /* b2MouseJoint.cpp in Sources */,
@@ -1921,6 +1948,7 @@
 				15A3D9991682F7F9002FB0C5 /* cpDampedSpring.c in Sources */,
 				15A3D99A1682F7F9002FB0C5 /* cpGearJoint.c in Sources */,
 				15A3D99B1682F7F9002FB0C5 /* cpGrooveJoint.c in Sources */,
+				8F0A7C6718CBABFF005A7FA6 /* Path.cpp in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
@@ -2013,6 +2041,7 @@
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,
+				8F73F04D18C29D4000F75E1D /* Pathfinder.cpp in Sources */,
 				1A8F3B78175E05DA00049216 /* CCSkeletonAnimation.cpp in Sources */,
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
@@ -2073,6 +2102,7 @@
 				379BB9C217F03F3700829B88 /* UIImageView.cpp in Sources */,
 				379BB9C317F03F3700829B88 /* UILabel.cpp in Sources */,
 				379BB9C417F03F3700829B88 /* UILabelAtlas.cpp in Sources */,
+				8F0A7C6A18CBB5D9005A7FA6 /* PathNode.cpp in Sources */,
 				379BB9C517F03F3700829B88 /* UILabelBMFont.cpp in Sources */,
 				379BB9C617F03F3700829B88 /* UILoadingBar.cpp in Sources */,
 				379BB9C717F03F3700829B88 /* UISlider.cpp in Sources */,

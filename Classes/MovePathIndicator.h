@@ -29,10 +29,7 @@ public:
     void setUnit(Unit *unit);
     
     inline CCPoint getStartPoint(){ return _startPoint; }
-    inline void setStartPoint(const CCPoint &startPoint)
-    {
-        _startPoint = ccp(startPoint.x, startPoint.y);
-    }
+    void setStartPoint(const CCPoint &startPoint);
     
     inline CCPoint getEndPoint(){ return _endPoint; }
     void setEndPoint(const CCPoint &endPoint);

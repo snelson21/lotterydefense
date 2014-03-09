@@ -20,7 +20,7 @@ MovePathIndicator::MovePathIndicator()
 }
 MovePathIndicator::~MovePathIndicator()
 {
-    
+    CC_SAFE_RELEASE(_unit);
 }
 
 MovePathIndicator *MovePathIndicator::createWithUnit(Unit *unit)
@@ -49,6 +49,13 @@ void MovePathIndicator::setUnit(Unit *unit)
     
     setStartPoint(_unit->getPosition());
     setEndPoint(_unit->getPosition());
+}
+
+void MovePathIndicator::setStartPoint(const CCPoint &startPoint)
+{
+    _startPoint = ccp(startPoint.x, startPoint.y);
+    precalculate();
+    
 }
 
 void MovePathIndicator::setEndPoint(const CCPoint &endPoint)
@@ -86,5 +93,5 @@ void MovePathIndicator::precalculate()
 
 void MovePathIndicator::draw(void)
 {
-    ccDrawSolidPoly(_vertices, 4, ccc4f(0, 0, 0, 0.5));
+    ccDrawSolidPoly(_vertices, 4, MOVE_PATH_COLOR);
 }

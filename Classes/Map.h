@@ -15,13 +15,15 @@ USING_NS_CC;
 
 class GameTile;
 
-class Map 
+class Map : public CCObject
 {
 public:
     Map();
-    ~Map();
+    virtual ~Map();
     
-    void init();
+    static Map *create();
+    
+    bool init();
     
     inline GameTile **getTiles() { return _tiles; }
     inline int getTotalTiles() { return _totalTiles; }
@@ -29,6 +31,8 @@ public:
     GameTile *getTile(int column, int row);
     
     GameTile *getTileForTouch(CCTouch *touch);
+    
+    GameTile *getTileForLocation(const CCPoint &location);
     
 protected:
     

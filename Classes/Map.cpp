@@ -17,7 +17,25 @@ Map::Map()
 
 Map::~Map()
 {
+    for(int i = 0; i < _totalTiles; i++)
+    {
+        CC_SAFE_RELEASE(_tiles[i]);
+    }
     
+    delete _tiles;
+}
+
+Map *Map::create()
+{
+    Map *map = new Map();
+    if(map && map->init())
+    {
+        map->autorelease();
+        return map;
+    }
+    
+    CC_SAFE_DELETE(map);
+    return NULL;
 }
 
 GameTile *Map::getTile(int column, int row)
@@ -29,7 +47,7 @@ GameTile *Map::getTile(int column, int row)
     return _tiles[index];
 }
 
-void Map::init()
+bool Map::init()
 {
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     _totalTiles = TILE_ROWS * TILE_COLUMNS;
@@ -47,8 +65,8 @@ void Map::init()
     
     for(int i = 0; i < _totalTiles; i++)
     {
-        GameTile *tile = new GameTile();
-        tile->setPosition(ccp(currentX, currentY));
+        GameTile *tile = GameTile::createWithPosition(ccp(currentX, currentY));
+        CC_SAFE_RETAIN(tile);
         
         _tiles[i] = tile;
         
@@ -56,9 +74,15 @@ void Map::init()
         if(lastTile != NULL)
         {
             lastTile->right = tile;
+            if(lastTile->down)
+            {
+                lastTile->down->upRight = tile;
+            }
         }
         
         int row = i / TILE_COLUMNS;
+        tile->setZIndex(-1 * row);
+        
         if(row > 0)
         {
             GameTile *downTile = _tiles[i - TILE_COLUMNS];
@@ -66,7 +90,7 @@ void Map::init()
             tile->downRight = downTile->right;
             tile->downLeft = downTile->left;
             downTile->up = tile;
-            downTile->upRight = tile->right;
+            //downTile->upRight = tile->right;
             downTile->upLeft = tile->left;
         }
         
@@ -79,13 +103,19 @@ void Map::init()
             currentY += TILE_HEIGHT;
         }
     }
+    
+    return true;
 }
 
 
 GameTile *Map::getTileForTouch(CCTouch *touch)
 {
-    CCPoint location = touch->getLocation();
-    
+    return getTileForLocation(touch->getLocation());
+}
+
+
+GameTile *Map::getTileForLocation(const CCPoint &location)
+{
     for(int i = 0; i < _totalTiles; i++)
     {
         GameTile *tile = _tiles[i];

@@ -20,13 +20,16 @@
 USING_NS_CC;
 
 class MovePathIndicator;
+class GameTile;
+class Path;
 
 class Unit : public CCSprite, public CCTargetedTouchDelegate
 {
     
-public:
 #pragma mark -
 #pragma mark Constructor/Destructor
+    
+public:
     
     /**
      @brief  Unit constructor
@@ -40,6 +43,8 @@ public:
 
 #pragma mark -
 #pragma mark Autorelease Creators
+    
+public:
     
     /**
      @brief  Creates and initializes an autoreleased Unit with a sprite frame
@@ -59,6 +64,8 @@ public:
 #pragma mark -
 #pragma mark Initialization
     
+public:
+    
     /**
      @brief  Initializes the Unit with a CCSpriteFrame
      @param  CCSpriteframe that defines the image and location of the sprite in the image
@@ -69,6 +76,8 @@ public:
     
 #pragma mark -
 #pragma mark Getters / Setters
+
+public:
     
     inline long getInitialHitPoints() { return _initialHitPoints; }
     inline void setInitialHitPoints(long initialHitPoints) { _initialHitPoints = initialHitPoints; }
@@ -112,10 +121,18 @@ public:
     CCRect getRect();
     
     inline MovePathIndicator *getMovePathIndicator() { return _movePathIndicator; }
-    void setMovePathIndicator(MovePathIndicator *movePathIndicator); 
+    void setMovePathIndicator(MovePathIndicator *movePathIndicator);
+    
+    inline GameTile *getGameTile(){ return _gameTile; }
+    void setGameTile(GameTile *gameTile);
+    
+    inline int getZIndex(){ return _zIndex; }
+    void setZIndex(int zIndex);
     
 #pragma mark -
 #pragma mark Movement
+    
+public:
     
     /**
      @brief  Move the unit to the location specified with movement animation
@@ -124,12 +141,43 @@ public:
     void moveToLocation(const CCPoint &newLocation);
     
     /**
+     @brief  Move the unit along an array of tiles
+     @param  the array of GameTile objects
+     */
+    void moveAlongPath(Path *path);
+    
+    /**
+     @brief  Warp the unit to a specific GameTile (no time and no animation)
+     @param  GameTile to warp to
+     */
+    void warpToTile(GameTile *tile);
+
+protected:
+    
+    /**
      @brief  Callback that will stop the movement animation.  Should be called when movement stops.
      */
     void moveFinished();
     
+    /**
+     @brief  Create a chainable move action from the start location to the end location
+     @param  start position
+     @param  end position
+     @return moveto action
+     */
+    CCFiniteTimeAction *createMoveAction(const CCPoint &startPosition, const CCPoint &endPosition);
+    
+    
+    /**
+     @brief  Update callback that should be called when the unit is moving
+     @param  the amount of time that has elapsed since the last movement
+     */
+    virtual void movementUpdate(float timeElapsed);
+    
 #pragma mark -
 #pragma mark Touches
+
+public:
     
     /**
      @brief  Check if the location of the given touch event is within the bounding box of the unit
@@ -170,10 +218,34 @@ public:
     
     virtual void touchDelegateRelease();
     
+#pragma mark -
+#pragma mark Drawing Helpers
+    
+    
 protected:
+    
+    /**
+     @brief  Draws a path segment by segment
+     */
+    void drawPath(CCArray *path);
+    
+#pragma mark -
+#pragma mark Calculations
+
+protected:
+    /**
+     @brief  Calculates the travel time for this unit based on its speed to a given location
+             from a given location
+     @param  start location
+     @param  end location
+     @return travel time between start and end location
+     */
+    float calcTravelTime(const CCPoint &startLocation, const CCPoint &endLocation);
     
 #pragma mark -
 #pragma mark Attributes
+    
+protected:
     /**
      @brief  The initial hit points this Unit has at creation, used for life percentage calculation
      */
@@ -213,10 +285,22 @@ protected:
      @brief  Speed of movement
      */
     float _speed;
+    
+    /**
+     @brief  Game Tile the unit is currently on
+     */
+    GameTile *_gameTile;
+    
+    /**
+     @brief  Current z-index of this unit
+     */
+    int _zIndex;
+    
 
 #pragma mark -
 #pragma mark Animations
-    
+
+protected:
     /**
      @brief  Stationary sprite frame
      */
@@ -242,8 +326,18 @@ protected:
      */
     CCAnimation *_deathAnimation;
     
+    /**
+     @brief  Create a repeat animation 
+     @param  animation to repeat
+     @param  tag to stop the animation
+     @return a repeat of the animation that repeats forever
+     */
+    CCRepeat *createRepeatAnimation(CCAnimation *animation, int tag);
+    
 #pragma mark -
 #pragma mark Indicators
+    
+protected:
     
     /**
      @brief Move Path Indicator

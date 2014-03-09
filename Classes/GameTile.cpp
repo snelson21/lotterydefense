@@ -9,8 +9,11 @@
 #include "GameTile.h"
 #include "cocos2d.h"
 #include "AppMacros.h"
+#include <vector>
 
 USING_NS_CC;
+
+using namespace std;
 
 GameTile::GameTile()
 : _unit(NULL)
@@ -28,6 +31,24 @@ GameTile::GameTile()
 GameTile::~GameTile()
 {
     CC_SAFE_RELEASE(_unit);
+}
+
+GameTile *GameTile::createWithPosition(const CCPoint &position)
+{
+    GameTile *gameTile = new GameTile();
+    if(gameTile && gameTile->initWithPosition(position))
+    {
+        gameTile->autorelease();
+        return gameTile;
+    }
+    
+    CC_SAFE_DELETE(gameTile);
+    return NULL;
+}
+bool GameTile::initWithPosition(const CCPoint &position)
+{
+    setPosition(position);
+    return true;
 }
 
 void GameTile::setPosition(const CCPoint &position)
@@ -51,4 +72,19 @@ void GameTile::setUnit(Unit *unit)
     CC_SAFE_RELEASE(_unit);
     _unit = unit;
     CC_SAFE_RETAIN(_unit);
+}
+
+vector<GameTile *>GameTile::getNeighbors()
+{
+    vector<GameTile *> neighbors;
+    
+    if(up) neighbors.push_back(up);
+    if(down) neighbors.push_back(down);
+    if(left) neighbors.push_back(left);
+    if(right) neighbors.push_back(right);
+    if(upLeft) neighbors.push_back(upLeft);
+    if(upRight) neighbors.push_back(upRight);
+    if(downLeft) neighbors.push_back(downLeft);
+    if(downRight) neighbors.push_back(downRight);
+    return neighbors;
 }

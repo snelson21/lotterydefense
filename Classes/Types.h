@@ -21,4 +21,16 @@ typedef struct tagResource
 
 enum UnitAlliance { Friendly, Enemy, Neutral };
 
+enum Direction { Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight };
+
+typedef struct tagPathSegment
+{
+    CCPoint start;
+    CCPoint end;
+    Direction direction;
+    int fromStartCost;
+    int toEndCost;
+    
+} PathSegment;
+
 #endif

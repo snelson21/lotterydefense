@@ -27,6 +27,9 @@
 
 #define FIXED_TIMESTEP (1.0/60.0)
 
-#define MOVE_PATH_WIDTH 5.0f
+#define MOVEMENT_UPDATE_TIMESTEP (1.0 / 30)
+
+#define MOVE_PATH_WIDTH 1.0f
+#define MOVE_PATH_COLOR ccc4f(0.0f, 0.6f, 0.0f, 0.2f)
 
 #endif

@@ -72,6 +72,7 @@ public:
     void drawMap(Map *map);
     
     inline Map *getMap() { return _map; }
+    void setMap(Map *map);
 
 protected:
     float _timeAccumulator;
