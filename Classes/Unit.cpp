@@ -32,6 +32,7 @@ Unit::Unit()
 , _targetEnemy(NULL)
 , _movePathIndicator(NULL)
 , _gameTile(NULL)
+, _destinationTile(NULL)
 {
     
 }
@@ -46,6 +47,7 @@ Unit::~Unit()
     CC_SAFE_RELEASE(_targetEnemy);
     CC_SAFE_RELEASE(_movePathIndicator);
     CC_SAFE_RELEASE(_gameTile);
+    CC_SAFE_RELEASE(_destinationTile);
 }
 
 #pragma mark -
@@ -162,6 +164,13 @@ void Unit::setGameTile(GameTile *gameTile)
     }
 }
 
+void Unit::setDestinationTile(GameTile *destinationTile)
+{
+    CC_SAFE_RELEASE(_destinationTile);
+    _destinationTile = destinationTile;
+    CC_SAFE_RETAIN(_destinationTile);
+}
+
 
 CCRect Unit::getRect()
 {
@@ -213,6 +222,7 @@ void Unit::moveAlongPath(Path *path)
     while(node)
     {
         GameTile *tile = node->getGameTile();
+        setDestinationTile(tile);
         moveActions->addObject(createMoveAction(startPosition, tile->getPosition()));
         startPosition = tile->getPosition();
         node = node->next();
@@ -251,6 +261,7 @@ float Unit::calcTravelTime(const CCPoint &startLocation, const CCPoint &endLocat
 void Unit::moveFinished()
 {
     this->unschedule(schedule_selector(Unit::movementUpdate));
+    setDestinationTile(NULL);
     setMovePathIndicator(NULL);
     stopActionByTag(MOVEMENT_ANIMATION_TAG);
     setDisplayFrame(_stationaryFrame);
@@ -290,12 +301,13 @@ bool Unit::ccTouchBegan(CCTouch* touch, CCEvent* event)
     if(containsTouchLocation(touch))
     {
         CCLog("Touched Unit at %f,%f", getPosition().x, getPosition().y);
-        if(_movePathIndicator == NULL)
-        {
+        //if(_movePathIndicator == NULL)
+        //{
             //create the move path indicator
+            stopAllActions();
             moveFinished();
             setMovePathIndicator(MovePathIndicator::createWithUnit(this));
-        }
+        //}
         
         return true;
     }
@@ -307,25 +319,36 @@ void Unit::ccTouchMoved(CCTouch* touch, CCEvent* event)
     getMovePathIndicator()->setEndPoint(touch->getLocation());
 }
 
+void Unit::ccTouchCancelled(CCTouch *touch, CCEvent *event)
+{
+    ccTouchEnded(touch, event);
+}
+
 void Unit::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
+    CCLog("Touch Ended");
     Map *map = ((GameScene *)(getParent()->getParent()))->getMap();
     GameTile *tile = map->getTileForTouch(touch);
-    if(tile != NULL)
+    if(tile == NULL)
     {
-        CCPoint tilePosition = tile->getPosition();
-        _movePathIndicator->setEndPoint(tilePosition);
-        
-        GameTile *currentTile = map->getTileForLocation(getPosition());
-        
-        Pathfinder *pathfinder = Pathfinder::createWithMap(map);
-        CC_SAFE_RETAIN(pathfinder);
-        Path *path = pathfinder->findPath(currentTile, tile);
-        CC_SAFE_RELEASE(pathfinder);
-        //drawPath(path);
-        
-        moveAlongPath(path);
+        CCPoint endPoint = touch->getLocation();
+        while(tile == NULL)
+        {
+            endPoint = adjustEndpoint(endPoint);
+            tile = map->getTileForLocation(endPoint);
+        }
     }
+    
+   
+    setDestinationTile(tile);
+    CCPoint tilePosition = tile->getPosition();
+    _movePathIndicator->setEndPoint(tilePosition);
+        
+    Pathfinder *pathfinder = Pathfinder::createWithMap(map);
+    Path *path = pathfinder->findPath(_gameTile, _destinationTile);
+    //drawPath(path);
+        
+    moveAlongPath(path);
 }
 
 void Unit::drawPath(CCArray *path)
@@ -345,6 +368,17 @@ void Unit::drawPath(CCArray *path)
         startLocation = endLocation;
     }
     ((GameScene *)(getParent()->getParent()))->addChild(drawNode);
+}
+
+CCPoint Unit::adjustEndpoint(const CCPoint &endPoint)
+{
+    CCPoint startPoint = getPosition();
+    float distance = ccpDistance(startPoint, endPoint);
+    CCPoint vector = ccp(startPoint.x - endPoint.x, startPoint.y - endPoint.y);
+    CCPoint unitVector = ccpMult(vector, 1 / distance);
+    CCPoint adjustVector = ccpMult(unitVector, TILE_HEIGHT * 0.1);
+    CCPoint adjustedEndpoint = ccpAdd(endPoint, adjustVector);
+    return adjustedEndpoint;
 }
 
 CCObject* Unit::copyWithZone(CCZone *pZone)
@@ -371,7 +405,10 @@ void Unit::movementUpdate(float tileElapsed)
     if(tile->getUnit() != NULL && tile->getUnit() != this)
     {
         stopAllActions();
-        moveFinished();
+        Pathfinder *pathfinder = Pathfinder::createWithMap(map);
+        Path *path = pathfinder->findPath(_gameTile, _destinationTile);
+        moveAlongPath(path);
+        //moveFinished();
         return;
     }
     

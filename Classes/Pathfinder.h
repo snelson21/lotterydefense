@@ -35,6 +35,8 @@ public:
     inline Map *getMap(){ return _map; }
     void setMap(Map *map);
     
+    GameTile *adjustEndTile(GameTile *startTile, GameTile *endTile, CCArray *noPathList);
+    
     Path *findPath(GameTile *startTile, GameTile *endTile);
     
     inline GameTile *getEndTile(){ return _endTile; }

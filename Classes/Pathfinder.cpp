@@ -75,6 +75,42 @@ void Pathfinder::setEndTile(GameTile *endTile)
     CC_SAFE_RETAIN(_endTile);
 }
 
+GameTile *Pathfinder::adjustEndTile(GameTile *startTile, GameTile *endTile, CCArray *noPathList)
+{
+    PathFindTileMinHeap *altEndTiles = PathFindTileMinHeap::create();
+    CCArray *closedList = CCArray::create();
+    
+    GameTile *tile = endTile;
+    while(tile->getUnit() != NULL || noPathList->containsObject(tile))
+    {
+        vector<GameTile *> neighbors = tile->getNeighbors();
+        for(int i = 0; i < neighbors.size(); i++)
+        {
+            GameTile *neighbor = neighbors[i];
+            if(closedList->containsObject(neighbor) || altEndTiles->containsGameTile(neighbor))
+            {
+                continue;
+            }
+        
+            PathFindTile *neighborPathFindTile = PathFindTile::createWithGameTile(neighbor);
+            float fromStartScore = ccpDistance(startTile->getPosition(), neighbor->getPosition());
+            float toEndScore = ccpDistance(neighbor->getPosition(), endTile->getPosition());
+            neighborPathFindTile->setFromStartScore(fromStartScore / 2.0);
+            neighborPathFindTile->setToEndScore(toEndScore);
+            altEndTiles->insert(neighborPathFindTile);
+        }
+        if(altEndTiles->size() == 0)
+        {
+            return NULL;
+        }
+        PathFindTile *bestScore = altEndTiles->pop();
+        
+        tile = bestScore->getGameTile();
+        closedList->addObject(tile);
+    }
+    return tile;
+}
+
 Path* Pathfinder::findPath(GameTile *startTile, GameTile *endTile)
 {
     setEndTile(endTile);
@@ -84,6 +120,26 @@ Path* Pathfinder::findPath(GameTile *startTile, GameTile *endTile)
     
     
     PathFindTile *endPathFindTile = processNextTile();
+    if(endPathFindTile == NULL)
+    {
+        CCArray *noPathList = CCArray::create();
+        noPathList->addObject(endTile);
+        while(endPathFindTile == NULL)
+        {
+            CCLog("No path to end tile");
+            GameTile *newEndTile = adjustEndTile(startTile, endTile, noPathList);
+            if(newEndTile == NULL)
+            {
+                break;
+            }
+            noPathList->addObject(newEndTile);
+            
+            addToOpenList(tile);
+            setEndTile(newEndTile);
+            _closedList->removeAllObjects();
+            endPathFindTile = processNextTile();
+        }
+    }
     if(endPathFindTile)
     {
         CCLog("FOUND PATH");
@@ -120,11 +176,7 @@ PathFindTile *Pathfinder::processNextTile()
         PathFindTile *neighborPathFindTile;
         
         GameTile *neighbor = neighbors[i];
-        if(_closedList->containsObject(neighbor))
-        {
-            continue;
-        }
-        if(neighbor->getUnit())
+        if(_closedList->containsObject(neighbor) || neighbor->getUnit())
         {
             continue;
         }

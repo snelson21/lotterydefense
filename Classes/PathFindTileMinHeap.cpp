@@ -50,6 +50,11 @@ int PathFindTileMinHeap::indexOfGameTile(GameTile *gameTile)
     return -1;
 }
 
+bool PathFindTileMinHeap::containsGameTile(GameTile *gameTile)
+{
+    return (indexOfGameTile(gameTile) >= 0);
+}
+
 PathFindTile *PathFindTileMinHeap::pathFindTileForIndex(int index)
 {
     return _heap[index];

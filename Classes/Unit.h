@@ -129,6 +129,9 @@ public:
     inline int getZIndex(){ return _zIndex; }
     void setZIndex(int zIndex);
     
+    inline GameTile *getDestinationTile(){ return _destinationTile; }
+    void setDestinationTile(GameTile *destinationTile);
+    
 #pragma mark -
 #pragma mark Movement
     
@@ -212,6 +215,8 @@ public:
     
     virtual void ccTouchEnded(CCTouch* touch, CCEvent* event);
     
+    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+    
     virtual CCObject* copyWithZone(CCZone *pZone);
     
     virtual void touchDelegateRetain();
@@ -241,6 +246,8 @@ protected:
      @return travel time between start and end location
      */
     float calcTravelTime(const CCPoint &startLocation, const CCPoint &endLocation);
+    
+    CCPoint adjustEndpoint(const CCPoint &endPoint);
     
 #pragma mark -
 #pragma mark Attributes
@@ -295,6 +302,11 @@ protected:
      @brief  Current z-index of this unit
      */
     int _zIndex;
+    
+    /**
+     @brief  Destination GameTile for a running moveto action chain
+     */
+    GameTile *_destinationTile;
     
 
 #pragma mark -

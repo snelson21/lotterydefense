@@ -32,7 +32,7 @@ public:
     int size();
     int indexOfGameTile(GameTile *gameTile);
     PathFindTile *pathFindTileForIndex(int index);
-    
+    bool containsGameTile(GameTile *gameTile);
     
     void heapifyUp(int index);
     void heapifyDown(int index);
